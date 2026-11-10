@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SpendWise helps you track a monthly budget and expenses.">
+  <title>SpendWise | Budget Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="SpendWise home">
+      <span class="brand-mark" aria-hidden="true">$</span>
+      <span>SpendWise</span>
+    </a>
+    <p class="header-note">A clearer view of your money</p>
+  </header>
+
+  <main class="page-content">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">YOUR MONTHLY MONEY PLAN</p>
+      <h1 id="page-title">Make every shilling count.</h1>
+      <p>Set a budget, record your expenses, and keep an eye on what remains.</p>
+    </section>
+
+    <section class="summary-grid" aria-label="Budget summary">
+      <article class="summary-card budget-card">
+        <p class="card-label">Monthly budget</p>
+        <p class="card-value" id="budget-value">KSh 0.00</p>
+        <p class="card-hint">Your spending limit</p>
+      </article>
+      <article class="summary-card spent-card">
+        <p class="card-label">Total spent</p>
+        <p class="card-value" id="spent-value">KSh 0.00</p>
+        <p class="card-hint">Across all expenses</p>
+      </article>
+      <article class="summary-card remaining-card">
+        <p class="card-label">Remaining balance</p>
+        <p class="card-value" id="remaining-value">KSh 0.00</p>
+        <p class="card-hint" id="remaining-hint">Set a budget to get started</p>
+      </article>
+    </section>
+
+    <section class="workspace" aria-label="Budget controls and expenses">
+      <div class="action-panel">
+        <div>
+          <p class="eyebrow">TAKE CONTROL</p>
+          <h2>Update your plan</h2>
+          <p class="section-description">Set your spending limit and record expenses as they happen.</p>
+        </div>
+        <form class="entry-form budget-form" id="budget-form">
+          <label for="budget-input">Monthly budget (KSh)</label>
+          <div class="form-controls">
+            <input id="budget-input" name="budget" type="number" min="0.01" step="0.01" placeholder="e.g. 30000" required>
+            <button class="button button-secondary" type="submit">Set budget</button>
+          </div>
+        </form>
+        <form class="entry-form expense-form" id="expense-form">
+          <label for="expense-category">Expense name</label>
+          <input id="expense-category" name="category" type="text" maxlength="80" placeholder="e.g. Groceries" required>
+          <label for="expense-amount">Amount (KSh)</label>
+          <input id="expense-amount" name="amount" type="number" min="0.01" step="0.01" placeholder="e.g. 2500" required>
+          <button class="button button-primary" type="submit">Add expense <span aria-hidden="true">+</span></button>
+        </form>
+        <button class="button button-secondary prompt-button" id="prompt-entry-button" type="button">Enter a budget with JavaScript prompts</button>
+        <p class="status-message" id="status-message" role="status" aria-live="polite">Start by setting your monthly budget.</p>
+      </div>
+
+      <div class="expense-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">YOUR ACTIVITY</p>
+            <h2>All expenses</h2>
+          </div>
+          <span class="expense-count" id="expense-count">0 entries</span>
+        </div>
+        <div class="table-wrapper">
+          <table class="expense-table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Expense</th>
+                <th scope="col">Amount</th>
+                <th scope="col"><span class="visually-hidden">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="expense-list" aria-live="polite">
+              <tr><td class="empty-state" colspan="4">No expenses yet. Add one to start tracking.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <p class="console-note">Tip: Open your browser's developer console to see the labeled calculation results.</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>SpendWise <span aria-hidden="true">&middot;</span> Small steps toward smarter spending</p>
+  </footer>
+</body>
+</html>
